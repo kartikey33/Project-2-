@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project 2</title>
+</head>
+<body>
+    <div class="container">
+        
+        <h1> BMI Calculator</h1>
+        <h2>your local time 
+        </h2>
+        <div id="time"></div>
+        
+        <form>
+        <p><label>enter height in cm :</label> <input type ="text" id = "height"></p>
+        <p><label>enter weight  in Kg :</label> <input type ="text" id = "weight"></p>
+        <button>Calculate</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    
+</body>
+<script>
+    
+    setInterval( function(){
+     const date = new Date();
+     time.innerHTML = date.toLocaleTimeString()   } , 1000)
+  const form = document.querySelector('form')
+
+  form.addEventListener('submit' , function(e){
+    e.preventDefault();
+
+    const height = parseInt(document.querySelector('#height').value)
+    
+    const weight = parseInt(document.querySelector('#weight').value)
+   
+    const result = document.querySelector('#result')
+
+    if(height === '' || height < 0 || isNaN(height)){
+     result.innerHTML = `enter valid height ${height}`
+    }else if(weight === '' || weight < 0 || isNaN(weight)){
+     result.innerHTML = `enter valid weight ${weight}`
+    } else {
+      const bmi = ( weight/ ((height*height)/10000) ).toFixed(2)
+      result.innerHTML = `${bmi}`
+    }
+  })
+
+</script>
+</html>
